@@ -20,6 +20,7 @@ const playAgainBtn = document.querySelector('.play-again');
 
 // Equations
 
+let questionsAmount = 0;
 let equationsArray = [];
 
 // Game Page
@@ -82,3 +83,35 @@ function createEquations() {
 //   bottomSpacer.classList.add('height-500');
 //   itemContainer.appendChild(bottomSpacer);
 // }
+
+// Get the value from selected radio button
+function getRadioValue() {
+  let radioValue;
+  radioInputs.forEach((radioInput) => {
+    if(radioInput.checked) {
+      radioValue = radioInput.value;
+    }
+  })
+  return radioValue;
+}
+
+// Form that decides amount of questions
+function selectQuestionAmount(e) {
+  e.preventDefault();
+  questionsAmount = getRadioValue();
+  console.log(questionsAmount)
+}
+
+startForm.addEventListener('click', () => {
+  radioContainers.forEach((radioEl) => {
+    // Remove Selected Label Styling
+    radioEl.classList.remove('selected-label');
+    // Add it back if radio input is check
+    if(radioEl.children[1].checked) {
+      radioEl.classList.add('selected-label');
+    }
+  })
+});
+
+// Event Listeners
+startForm.addEventListener('submit', selectQuestionAmount);
