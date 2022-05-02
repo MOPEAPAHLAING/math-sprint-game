@@ -37,7 +37,7 @@ let timePlayed = 0;
 let baseTime = 0;
 let penaltyTime = 0;
 let finalTime = 0;
-let finalTimeDisplay = '0.0s';
+let finalTimeDisplay = '0.0';
 
 // Scroll
 let valueY = 0;
@@ -84,8 +84,7 @@ function updateBestScore() {
     // Select correct Best Score to update
     if(questionsAmount == score.questions) {
       // Return Best Score as number with one decimal
-      const savedBestScore = Number(bestScoreArray[index].bestScore);
-      console.log(savedBestScore)
+      const savedBestScore = Number(bestScoreArray[index].bestScore)
       // Update if the new final score is less or replacing zero
       if(savedBestScore === 0 || savedBestScore > finalTime) {
         bestScoreArray[index].bestScore = finalTimeDisplay;
@@ -106,7 +105,7 @@ function playAgain() {
   equationsArray = [];
   playerGuessArray = [];
   valueY = 0;
-  playAgain.hidden = true;
+  playAgainBtn.hidden = true;
 }
 
 // Show Score Page
@@ -126,7 +125,7 @@ function scoresToDOM(){
   penaltyTime = penaltyTime.toFixed(1);
   baseTimeEl.textContent = `Base Time: ${baseTime}s`;
   penaltyTimeEl.textContent = `Penalty: +${penaltyTime}s`;
-  finalTimeEl.textContent = `${finalTimeDisplay}s`;
+  finalTimeEl.textContent = `${finalTimeDisplay}s`
   updateBestScore();
   // Scroll to Top, go to Score Page
   itemContainer.scrollTo({ top: 0, behavior: 'instant'});
