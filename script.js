@@ -125,7 +125,7 @@ function scoresToDOM(){
   penaltyTime = penaltyTime.toFixed(1);
   baseTimeEl.textContent = `Base Time: ${baseTime}s`;
   penaltyTimeEl.textContent = `Penalty: +${penaltyTime}s`;
-  finalTimeEl.textContent = `${finalTimeDisplay}s`
+  finalTimeEl.textContent = `${finalTimeDisplay}s`;
   updateBestScore();
   // Scroll to Top, go to Score Page
   itemContainer.scrollTo({ top: 0, behavior: 'instant'});
@@ -134,9 +134,7 @@ function scoresToDOM(){
 
 // Stop timer, Process Results, go to Score Page
 function checkTime() {
-  console.log(timePlayed);
   if(playerGuessArray.length ==  questionsAmount) {
-    console.log('player guess array:', playerGuessArray);
     clearInterval(timer);
     // Check for wrong guesses, add penalty time
     equationsArray.forEach((equation, index) => {
@@ -149,7 +147,6 @@ function checkTime() {
       }
     });
     finalTime = timePlayed + penaltyTime;
-    console.log('time', timePlayed, 'penalty', penaltyTime, 'final', finalTime);
     scoresToDOM();
   }
 }
@@ -196,7 +193,6 @@ function createEquations() {
   const correctEquations = getRandomInt(questionsAmount);
   // Set amount of wrong equations
   const wrongEquations = questionsAmount - correctEquations;
-  console.log(correctEquations, wrongEquations)
   // Loop through, multiply random numbers up to 9, push to array
   for (let i = 0; i < correctEquations; i++) {
     firstNumber = getRandomInt(9);
